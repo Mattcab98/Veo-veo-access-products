@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+html {
+  background: linear-gradient(
+    90deg,
+    rgba(252, 104, 233, 1) 0%,
+    rgba(145, 0, 126, 1) 50%,
+    rgba(153, 38, 199, 1) 100%
+  );
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+@layer utilities {
+/* Chrome, Safari, Edge */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: #000; /* color del texto */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox */
+input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -moz-text-fill-color: #000;
+}
+
+}
