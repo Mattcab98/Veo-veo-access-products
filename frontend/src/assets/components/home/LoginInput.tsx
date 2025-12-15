@@ -7,29 +7,33 @@ type Props = {
   icon?: React.ReactNode;
   toggleShowPassword?: () => void;
   showPassword?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 };
 
-const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPassword, showPassword }: Props) => {
+const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPassword, showPassword, value, onChange }: Props) => {
   return (
     <div className="w-60 mx-auto flex flex-col gap-1">
       <label htmlFor={inputId} className="text-gray-500 text-sm">{nameLabel}</label>
 
-      <div className="flex items-center bg-fuchsia-200 rounded-2xl p-2">
+      <div className="flex items-center bg-fuchsia-200 rounded-2xl p-2 relative">
         {icon && <span className="px-3 text-pink-500">{icon}</span>}
         <input
           type={type === "password" && showPassword ? "text" : type}
           id={inputId}
           className="flex-1 text-black outline-0 text-sm"
+          value={value}
+          onChange={onChange}
         />
-        {type === "password" && toggleShowPassword && (
+        { toggleShowPassword && (
           <button
             type="button"
-            className="ml-auto text-pink-300"
+            className="text-pink-500 absolute right-2"
             onClick={toggleShowPassword}
           >
-            {showPassword ? <MdVisibilityOff size={20} /> : <MdVisibility size={20} />}
+            {showPassword ? <MdVisibilityOff size={18} /> : <MdVisibility size={18} />}
           </button>
-        )}
+        ) }
       </div>
     </div>
   );
