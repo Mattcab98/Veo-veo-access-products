@@ -1,7 +1,7 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
 
-import { Login } from './assets/components/home/Login';
-import Products from './assets/components/products/Products';
+import { Login } from './assets/components/loginHome/Login';
+import Home from './assets/components/home/Home';
 
 function Layout() {
   return (
@@ -16,7 +16,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Login />} />
-        <Route path='products' element={<Products />} />
+        <Route path='home' element={<Home />} />
       </Route>
     </Routes>
   );

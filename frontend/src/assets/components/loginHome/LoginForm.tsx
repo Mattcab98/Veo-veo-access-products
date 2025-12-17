@@ -56,7 +56,7 @@ const LoginForm = () => {
             await loginService({email, password});
 
             login();
-            navigate('/products');
+            navigate('/home');
 
         } catch {
             setError ('Credenciales invalidas')
