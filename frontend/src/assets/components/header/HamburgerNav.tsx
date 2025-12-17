@@ -11,7 +11,7 @@ const HamburgerNav = ({ isOpen, toggle }: Props) => {
                 <Hamburger
                     toggled={isOpen}
                     toggle={toggle}
-                    size={22}
+                    size={40}
                     color="#ffffff"
                     duration={0.65}
                 >

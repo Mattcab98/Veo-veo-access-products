@@ -1,23 +1,44 @@
-import { Outlet, Routes, Route } from 'react-router-dom';
+import {Outlet, Routes, Route } from 'react-router-dom';
 
 import { Login } from './assets/components/loginHome/Login';
 import Home from './assets/components/home/Home';
 
-function Layout() {
+
+function PublicLayout() {
   return (
-    <div>
-      <Outlet /> {/* Aquí se renderizan las rutas hijas */}
-    </div>
-  );
+    <>
+      <Outlet />
+    </>
+  )
+}
+
+function PrivateLayout() {
+  return (
+    <>
+      <Outlet />
+    </>
+  )
 }
 
 export default function App() {
   return (
+
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Login />} />
-        <Route path='home' element={<Home />} />
+
+      {/* 🌐 RUTAS PÚBLICAS */}
+      <Route element={<PublicLayout />}>
+        <Route path='/' element={<Login />} />
       </Route>
+
+      {/* 🔒 RUTAS PRIVADAS */}
+      <Route element={<PrivateLayout />}>
+        <Route path='/home' element={<Home />} />
+      </Route>
+
+
     </Routes>
+
+
+
   );
 }

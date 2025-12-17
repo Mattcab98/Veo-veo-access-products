@@ -35,20 +35,26 @@ const Header = () => {
   return (
     <>
 
-      <header className='bg-purple-900 flex justify-around items-center p-2'>
+      <header className='bg-purple-900 w-full flex justify-around lg:justify-between items-center p-8'>
 
         <Link to={'/home'}>
           <Logo />
-
         </Link>
 
         {/* 🖥️ NAV DESKTOP */}
-        <nav className='hidden md:flex bg-amber-900'>
-          <NavLinks className='flex gap-5' />
+        <nav className='hidden lg:flex'>
+          <NavLinks className='flex text-white text-2xl gap-10' />
         </nav>
 
+        <div className='hidden lg:flex'>
+          <Button
+            onClick={handleLogout}
+            nameButton={'Cerrar Sesión'}
+          />
+        </div>
+
         {/* 📱 HAMBURGER */}
-        <div className='flex md:hidden z-20'>
+        <div className='flex lg:hidden z-20'>
           <HamburgerNav isOpen={isOpen} toggle={toggleActive} />
         </div>
 
@@ -59,13 +65,13 @@ const Header = () => {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: .2, ease: 'easeOut', duration: 1 }}
-            className='flex flex-col justify-center items-center md:hidden absolute inset-0 bg-purple-900 z-10'
+            className='flex flex-col w-full justify-center items-center lg:hidden absolute inset-0 bg-purple-900 z-10'
           >
 
-            <NavLinks onClick={closeMenu} className='flex flex-col items-center gap-5' />
+            <NavLinks onClick={closeMenu} className='flex flex-col items-center gap-8 text-2xl text-white' />
 
-            <div className='scale-70 w-full h-full absolute grid place-items-end'>
-              {isOpen && (
+            <div className='scale-100 w-full h-100 absolute grid place-items-end'>
+              {isOpen &&(
                 <Button
                   onClick={handleLogout}
                   nameButton={'Cerrar Sesión'} />
@@ -73,7 +79,6 @@ const Header = () => {
             </div>
           </motion.nav>
         )}
-
 
       </header>
 

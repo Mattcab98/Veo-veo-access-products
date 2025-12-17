@@ -6,7 +6,7 @@ type Props = {
     className?: string;
 }
 
-const NavLinks = ({onClick, className = ''}: Props) => {
+const NavLinks = ({onClick, className}: Props) => {
   return (
               <ul className={className}>
             {navLinks.map((item) => {
@@ -15,7 +15,7 @@ const NavLinks = ({onClick, className = ''}: Props) => {
                   <Link 
                     to={item.path}
                     onClick={onClick}
-                    className='text-sm text-white'
+                    className=''
                 >
                     {item.label}
                   </Link>
