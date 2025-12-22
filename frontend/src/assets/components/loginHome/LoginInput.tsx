@@ -1,17 +1,20 @@
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
-  nameLabel: string;
+  nameLabel?: string;
   inputId: string;
   type?: "text" | "email" | "password";
   icon?: React.ReactNode;
   toggleShowPassword?: () => void;
   showPassword?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  placeholder?: string;
+  className?: string;
 };
 
-const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPassword, showPassword, value, onChange }: Props) => {
+const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPassword, showPassword, value, onChange, placeholder, className }: Props) => {
   return (
     <div className="w-60 mx-auto flex flex-col gap-1">
       <label htmlFor={inputId} className="text-gray-500 text-sm">{nameLabel}</label>
@@ -21,11 +24,16 @@ const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPasswor
         <input
           type={type === "password" && showPassword ? "text" : type}
           id={inputId}
-          className="flex-1 text-black outline-0 text-sm"
           value={value}
           onChange={onChange}
+          placeholder={placeholder}
+          className={twMerge(
+            "flex-1 text-black outline-0 text-sm bg-transparent",
+            className
+          )}
         />
-        { toggleShowPassword && (
+
+        {toggleShowPassword && (
           <button
             type="button"
             className="text-pink-500 absolute right-2"
@@ -33,7 +41,7 @@ const LoginInput = ({ nameLabel, inputId, type = "text", icon, toggleShowPasswor
           >
             {showPassword ? <MdVisibilityOff size={18} /> : <MdVisibility size={18} />}
           </button>
-        ) }
+        )}
       </div>
     </div>
   );
