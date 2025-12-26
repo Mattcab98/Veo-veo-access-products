@@ -1,5 +1,5 @@
 import Header from '../header/Header'
-import Hero from '../banner/hero'
+import Hero from '../banner/Hero'
 
 const Home = () => {
 
