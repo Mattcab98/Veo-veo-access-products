@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from '../../utils/Card';
 
 import { cardData } from '../../utils/DataCard';
